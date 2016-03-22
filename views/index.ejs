@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title%></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title%></h1>
+    <table>
+      <tr style="background: blanchedalmond">
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Actions</th>
+      </tr>
+      <% data.forEach(function(user) { %>
+      <tr>
+        <td><%= user.firstName %></td>
+        <td><%= user.surname %></td>
+        <td><%= user.age %></td>
+        <td><button id="<%= user.id%>" onclick="edit(this.id)">Edit</button><button id="<%= user.id%>" onclick="del(this.id)">Delete</button></td>
+      </tr>
+      <% }); %>
+    </table>
+    
+    <button id="addUser">Add</button>
+    
+    <form class="white_content" action="/" name="addUserForm" method="POST" id="addUserForm">
+      <p><label for="firstName">First Name</label>
+      <input type="text" name="firstName" id="firstName"></p>
+      <p><label for="surname">Last Name</label>
+      <input type="text" name="surname" id="surname"></p>
+      <p><label for="age">Age</label>
+      <input type="number" name="age" id="age"></p>
+      <p><button type="submit">Submit</button><button style="float:right; margin-right:10px;" id="close" type="button">Close</button></p>
+    </form>
+    
+    <form class="white_content" name="editUserForm" id="editUserForm">
+      <p><label for="firstName">First Name</label>
+      <input type="text" name="firstName" id="firstNameEdit"></p>
+      <p><label for="surname">Last Name</label>
+      <input type="text" name="surname" id="surnameEdit"></p>
+      <p><label for="age">Age</label>
+      <input type="number" name="age" id="ageEdit"></p>
+      <p><button type="button" id="editSubmit">Submit</button><button style="float:right; margin-right:10px;" id="closeEdit" type="button">Close</button></p>
+    </form>
+    
+    <div class="black_overlay"></div>
+    
+    <script src="/javascripts/main.js"></script>    
+  </body>
+</html>
